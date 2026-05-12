@@ -14,6 +14,8 @@ document.getElementById("login-btn").addEventListener("click",function(){
     if(contactNumber == "01234567890" && pin == "1234"){
         //3-1 true ::: >> alert > homepage
         alert("Login Success");
+        // window.location.replace("/home.html"); // not add in browser
+        window.location.assign("/home.html") // when use assign add in browser
     }
     else{
         //3-1 false ::: >> alert > return
