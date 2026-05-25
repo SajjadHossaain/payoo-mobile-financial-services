@@ -11,7 +11,7 @@ document.getElementById("cashout-btn").addEventListener("click",function(){
   const currentBalance = getBalance();
   //4-calculate new balance
   const newBalance = currentBalance - Number(cashoutAmount);
-  console.log("newBalance", newBalance);
+  // console.log("newBalance", newBalance);
   if (newBalance < 0) {
     alert("Invalid Amount!");
     return;
@@ -22,6 +22,18 @@ document.getElementById("cashout-btn").addEventListener("click",function(){
     alert("Cashout Successful");
     // document.getElementById("balance").innerText = newBalance;
     setBalance(newBalance);
+    //1- take history container
+    const history = document.getElementById("history-container");
+    //2- create new div
+    const div = document.createElement("div");
+    //3- in new div write innerHTMl
+    div.innerHTML = `
+    <div class="transaction-card p-5 bg-base-100 shadow">
+        Cashout Successful ${cashoutAmount},Cashout Number ${cashoutNumber} at ${new Date()}
+    </div>
+    `;
+    //4- append
+    history.append(div);
   }
   else{
     alert("Invalid Pin!");
